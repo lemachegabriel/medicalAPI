@@ -15,10 +15,6 @@ const Problem = new Schema({
         type : String,
         require: true,
     },
-    description: {
-        type : String,
-        reqquired : true,
-    },
     medicines : [medicine],
 
     createdAt : {
