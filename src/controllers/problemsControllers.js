@@ -6,6 +6,11 @@ module.exports = {
         const data = await Problems.create(req.body)
         return res.json(data)
     },
+    async update(req, res) {
+        const data = await Problems.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+        return res.json(data); 
+    },
     async addMed(req, res){
         const {name, _id, problemId} = req.body
         const postData = {"$push": {"medicines": [{"name" : name, "_id" : _id}]}}
@@ -18,6 +23,11 @@ module.exports = {
         const data = await Problems.findOneAndUpdate({"_id": problemId}, postData, {new:true})
         return res.json(data)
     }, 
+    async destroy(req, res) {
+        await Problems.findByIdAndRemove(req.params.id);
+
+        return res.send('excluido');
+    },
     async index(req, res){
         const data = await Problems.find()
         return res.json(data)

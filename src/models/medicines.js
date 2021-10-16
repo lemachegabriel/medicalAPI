@@ -18,10 +18,6 @@ const Medicines = new Schema({
         type: Boolean, 
         required: true
     },
-    veterinario:{
-        type: Boolean,
-        required: true
-    },
     nutricionista:{
         type: Boolean,
         required: true
