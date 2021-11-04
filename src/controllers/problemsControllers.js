@@ -18,8 +18,12 @@ module.exports = {
         return res.json(data)
     },
     async delMed(req, res){
-        const {_id, problemId} = req.body
-        const postData = {"$pull" : {"medicines" :{"_id" : _id}}}
+        // const {_id, problemId} = req.body
+        // const postData = {"$pull" : {"medicines" :{"_id" : _id}}}
+        // const data = await Problems.findOneAndUpdate({"_id": problemId}, postData, {new:true})
+        // return res.json(data)
+        const {problemId} = req.body
+        const postData = {"$set" : {"medicines": []}}
         const data = await Problems.findOneAndUpdate({"_id": problemId}, postData, {new:true})
         return res.json(data)
     }, 
@@ -38,4 +42,5 @@ module.exports = {
 
         return res.json(data)
     }
+
 }

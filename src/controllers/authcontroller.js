@@ -55,9 +55,9 @@ module.exports = {
             if(await User.findOne({email})){
                 return res.status(400).send({ error: "Email ja existe" })
             }
-            if(await User.findOne({name})){
-                return res.status(400).send({ error: "Nome de usuario ja existe" })
-            }
+            // if(await User.findOne({name})){
+            //     return res.status(400).send({ error: "Nome de usuario ja existe" })
+            // }
 
             const user = await User.create(req.body);
 

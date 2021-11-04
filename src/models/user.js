@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     email: {
         type : String,
         unique : true,
-        reqquired : true,
+        required : true,
         lowercase : true,
     },
     password : {
@@ -21,6 +21,10 @@ const UserSchema = new Schema({
     createdAt : {
         type : Date,
         default : Date.now(),
+    },
+    job : {
+        type: Number,
+        required : true,
     }
 });
 
