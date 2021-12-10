@@ -14,11 +14,11 @@ module.exports = {
     async verifyJWT(req, res){
         const token = req.cookies['auth-token']
         if (!token) 
-            return res.status(401).send({ auth: false, message: 'Token não informado.'})
+            return res.status(200).send({ auth: false, message: 'Token não informado.'})
             
         jwt.verify(token, process.env.AUTH_KEY, (err, decoded) => { 
             if (err) 
-                return res.status(500).send({ auth: false, message: 'Token inválido.' });
+                return res.status(200).send({ auth: false, message: 'Token inválido.' });
             req.UserId = decoded.id
         })
         const ID = req.UserId
