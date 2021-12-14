@@ -90,5 +90,11 @@ module.exports = {
         await User.findByIdAndRemove(req.params.id);
 
         return res.send('excluido');
+    }, 
+    async addFav(req, res){
+        const {name, _id, userId} = req.body
+        const postData = {"$push": {"favorites": [{"name" : name, "_id" : _id}]}}
+        const data = await User.findOneAndUpdate({'_id': userId}, postData, {new: true})
+        return res.json(data)
     }
 }

@@ -2,6 +2,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const bcryptjs = require('bcryptjs')
 
+const favs = new Schema({
+    name: {
+        type: String,
+    },
+    _id : {
+        type : String,
+    }   
+})
+
 const UserSchema = new Schema({
     name: {
         type : String,
@@ -25,7 +34,8 @@ const UserSchema = new Schema({
     job : {
         type: Number,
         required : true,
-    }
+    },
+    favorites: [favs]
 });
 
 UserSchema.pre('save', async function(next) {

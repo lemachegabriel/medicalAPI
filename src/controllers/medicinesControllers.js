@@ -3,7 +3,7 @@ const medicines = mongoose.model('Medicines')
 
 module.exports = {
     async index(req, res) {
-        const data = await medicines.find({}, 'name ');
+        const data = await medicines.find();
 
         return res.json(data);
     },
