@@ -44,10 +44,10 @@ module.exports = {
         })
 
         res.status(202).cookie("authtoken", token, {
-            //sameSite: 'strict',
+            sameSite: 'strict',
             secure: true,
 			path: '/',
-			expires: new Date(Date.now() + 24 * 60 * 60 * 10000),
+			expires: new Date(Date.now() + 24 * 60 * 60 * 10),
             httpOnly: true,
         }).send({user, token})
 
@@ -72,7 +72,7 @@ module.exports = {
                 //sameSite: 'strict',
                 secure: true,
                 path: '/',
-                expires: new Date(Date.now() + 24 * 60 * 60 * 10000),
+                expires: new Date(Date.now() + 24 * 60 * 60 * 10),
                 httpOnly: true,
             }).send({user, token})
 
