@@ -13,7 +13,9 @@ module.exports = {
     },
     async verifyJWT(req, res){
         console.log('fasfafsasfafsafsasfasfasfafsafsa')
+        console.log(req.cookies)
         console.log(req.cookies.authtoken)
+        console.log(req)
         const token = req.cookies.authtoken
         if (!token) 
             return res.status(200).send({ auth: false, message: 'Token não informado.'})
