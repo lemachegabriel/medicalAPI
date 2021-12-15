@@ -44,7 +44,7 @@ module.exports = {
         })
 
         res.status(202).cookie("authtoken", token, {
-            sameSite: 'lax',
+            sameSite: 'none',
             secure: true,
 			path: '/',
 			expires: new Date(Date.now() + 24 * 60 * 60 * 10),
