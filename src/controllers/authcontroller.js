@@ -12,7 +12,7 @@ module.exports = {
         return res.json(user);
     },
     async verifyJWT(req, res){
-        const token = req.cookies['auth-token']
+        const token = req.cookies['authtoken']
         if (!token) 
             return res.status(200).send({ auth: false, message: 'Token não informado.'})
             
@@ -40,7 +40,7 @@ module.exports = {
             expiresIn: 24 * 60 * 60 * 100
         })
 
-        res.status(202).cookie("auth-token", token, {
+        res.status(202).cookie("authtoken", token, {
             //sameSite: 'strict',
             secure: true,
 			path: '/',
@@ -65,7 +65,7 @@ module.exports = {
                 expiresIn: 86400
             })
             
-            res.status(202).cookie("auth-token", token, {
+            res.status(202).cookie("authtoken", token, {
                 //sameSite: 'strict',
                 secure: true,
                 path: '/',
@@ -79,7 +79,7 @@ module.exports = {
         
     },
     async logout(req, res) {
-        res.status(200).clearCookie("stock-token2").send("logout")
+        res.status(200).clearCookie("authtoken").send("logout")
     },
     async update(req, res) {
         const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
